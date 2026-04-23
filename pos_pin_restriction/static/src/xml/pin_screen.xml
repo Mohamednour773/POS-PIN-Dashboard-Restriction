@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="pos_pin_restriction.PinScreen" owl="1">
+        <div class="o_pos_pin_screen">
+            <div class="o_pin_container">
+                <div class="o_pin_header">
+                    <i class="fa fa-lock mb-3" style="font-size: 3rem; color: #714B67;"/>
+                    <h2>Point of Sale Log In</h2>
+                    <p>Enter your Employee PIN to access the POS Dashboard</p>
+                </div>
+                
+                <div class="o_pin_display">
+                    <div class="o_pin_dots">
+                        <t t-foreach="[0,1,2,3,4,5]" t-as="i" t-key="i">
+                            <div class="o_pin_dot" t-att-class="{ 'filled': state.pin.length > i }"></div>
+                        </t>
+                    </div>
+                </div>
+
+                <div class="o_pin_keypad">
+                    <button class="o_key" t-on-click="() => this.onKeyClick('1')">1</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('2')">2</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('3')">3</button>
+                    
+                    <button class="o_key" t-on-click="() => this.onKeyClick('4')">4</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('5')">5</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('6')">6</button>
+                    
+                    <button class="o_key" t-on-click="() => this.onKeyClick('7')">7</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('8')">8</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('9')">9</button>
+                    
+                    <button class="o_key o_key_clear" t-on-click="() => this.onClear()">Clear</button>
+                    <button class="o_key" t-on-click="() => this.onKeyClick('0')">0</button>
+                    <button class="o_key o_key_back" t-on-click="() => this.onBackspace()">
+                        <i class="fa fa-backspace"/>
+                    </button>
+                </div>
+
+                <div t-if="state.error" class="o_pin_error mt-4">
+                    <t t-esc="state.error"/>
+                </div>
+
+                <div class="o_pin_footer mt-5">
+                    <button class="btn btn-primary btn-lg w-100 o_btn_enter" 
+                            t-att-disabled="state.pin.length === 0"
+                            t-on-click="() => this.onEnter()">
+                        Enter Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

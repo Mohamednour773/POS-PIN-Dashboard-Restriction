@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define the Client Action for the PIN Screen -->
+    <record id="action_pin_screen" model="ir.actions.client">
+        <field name="name">POS Login</field>
+        <field name="tag">pos_pin_restriction.pin_screen</field>
+        <field name="target">main</field>
+    </record>
+
+    <!-- Override the Point of Sale Dashboard Menu to open the PIN screen first -->
+    <!-- In Odoo 17/18/19, the menu is usually defined in point_of_sale.menu_pos_dashboard -->
+    <menuitem id="point_of_sale.menu_pos_dashboard"
+              name="Dashboard"
+              parent="point_of_sale.menu_point_root"
+              action="action_pin_screen"
+              sequence="1"/>
+
+    <!-- Also high-level menu if needed, but Dashboard is the primary entry point -->
+</odoo>
