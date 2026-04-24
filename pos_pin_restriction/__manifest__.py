@@ -1,5 +1,5 @@
 {
-    'name': 'POS PIN Dashboard Restriction',
+    'name': 'POS PIN Dashboard',
     'version': '19.0.1.0.0',
     'category': 'Sales/Point of Sale',
     'summary': 'Restrict POS Dashboard access using Employee PIN',
